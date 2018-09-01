@@ -6,15 +6,19 @@ It also adds a vanilla-style decompressor which does the opposite.
 **RECIPES**
 
 *Compressor:*
+```
 C P C
 C T C
 C P C
+```
 C = Cobblestone, P = Piston, T = TNT
 
 *Decompressor:*
+```
 C S C
 C T C
 C S C
+```
 C = Cobblestone, S = Sticky Piston, T = TNT
 
 **FUEL**
@@ -35,10 +39,11 @@ Blocks are orientable like furnaces, hence FACING block state.
 Blocks have two textures for active/idle, like furnaces, hence ACTIVE block state.
 
 **JAC (Just A Crowbar)**
-
+```
 I I X
 I X X
 I X X
+```
 I = Iron Ingot, X = Empty Space
 
 Mostly exists for the pun, but has one use: breaking a decompressible block in-world with this
