@@ -1,12 +1,30 @@
 package com.icemetalpunk.jac.items;
 
-import com.icemetalpunk.jac.JAC;
+import java.util.List;
 
-public class ItemJAC extends JACItem {
+import javax.annotation.Nullable;
+
+import com.icemetalpunk.jac.JAC;
+import com.mojang.realmsclient.gui.ChatFormatting;
+
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+public class ItemJAC extends JACItemTool {
 
 	public ItemJAC() {
-		super("jac");
+		super("jac", ToolMaterial.IRON);
 		this.setCreativeTab(JAC.tab);
+		this.setEffectiveOnEverything(true);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		tooltip.add(ChatFormatting.DARK_AQUA + "Just A Crowbar" + ChatFormatting.RESET);
 	}
 
 }

@@ -2,7 +2,9 @@ package com.icemetalpunk.jac;
 
 import org.apache.logging.log4j.Logger;
 
+import com.icemetalpunk.jac.events.JACEventHandler;
 import com.icemetalpunk.jac.proxy.JACProxy;
+import com.icemetalpunk.jac.util.CompressionLookup;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -31,6 +33,8 @@ public class JAC {
 		}
 	};
 
+	public static JACEventHandler eventHandler = new JACEventHandler();
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		proxy.preInit(event);
@@ -44,5 +48,6 @@ public class JAC {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		proxy.postInit(event);
+		CompressionLookup.buildLookup();
 	}
 }

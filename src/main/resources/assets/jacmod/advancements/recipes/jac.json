@@ -1,0 +1,45 @@
+{
+  "parent": "jacmod:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jacmod:jac"
+    ]
+  },
+  "criteria": {
+    "has_iron": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:iron_ingot",
+            "data": 0
+          }
+        ]
+      }
+    },
+	"has_jac": {
+	  "trigger": "minecraft:inventory_changed",
+	    "conditions": {
+	      "items": [
+	        {
+	          "item": "jacmod:jac",
+			  "data": 0
+	        }
+	      ]
+	    }
+	},
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jacmod:jac"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_iron",
+	  "has_jac",
+      "has_the_recipe"
+    ]
+  ]
+}
