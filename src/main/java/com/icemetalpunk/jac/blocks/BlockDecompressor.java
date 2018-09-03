@@ -34,6 +34,7 @@ public class BlockDecompressor extends JACBlock implements ITileEntityProvider {
 
 	public BlockDecompressor() {
 		super("decompressor", Material.ROCK);
+		System.out.println("Constructor subclass");
 		this.setDefaultState(
 				this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(ACTIVE, false));
 	}

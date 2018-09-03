@@ -4,6 +4,7 @@ import java.util.function.BiConsumer;
 
 import com.icemetalpunk.jac.blocks.BlockDecompressor;
 import com.icemetalpunk.jac.blocks.JACBlock;
+import com.icemetalpunk.jac.util.ModelHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -46,7 +47,7 @@ public class JACBlockRegistry extends JACRegistry<Block> {
 		this.process(new BiConsumer<String, Block>() {
 			@Override
 			public void accept(String name, Block block) {
-				// ModelHelper.registerItemModel(Item.getItemFromBlock(block));
+				ModelHelper.registerItemModel(Item.getItemFromBlock(block));
 			}
 		});
 	}

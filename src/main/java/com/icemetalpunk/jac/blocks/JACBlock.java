@@ -24,7 +24,8 @@ public class JACBlock extends Block {
 
 	public void init(String name) {
 		this.setRegistryName(new ResourceLocation(JAC.MODID, name)).setUnlocalizedName(JAC.MODID + "." + name);
-		this.itemBlock.setRegistryName(this.getRegistryName()).setCreativeTab(JAC.tab);
+		this.setCreativeTab(JAC.tab);
+		this.itemBlock.setRegistryName(this.getRegistryName());
 	}
 
 	public ItemBlock getItemBlock() {
