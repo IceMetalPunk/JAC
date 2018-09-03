@@ -2,6 +2,7 @@ package com.icemetalpunk.jac.registries;
 
 import java.util.function.BiConsumer;
 
+import com.icemetalpunk.jac.blocks.BlockDecompressor;
 import com.icemetalpunk.jac.util.ModelHelper;
 
 import net.minecraft.block.Block;
@@ -14,6 +15,7 @@ public class JACBlockRegistry extends JACRegistry<Block> {
 
 	public JACBlockRegistry() {
 		super("block");
+		this.register("decompressor", new BlockDecompressor());
 	}
 
 	@SubscribeEvent
