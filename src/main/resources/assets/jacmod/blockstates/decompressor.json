@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "active=false,facing=north": { "model": "jacmod:decompressor" },
+        "active=false,facing=south": { "model": "jacmod:decompressor", "y": 180 },
+        "active=false,facing=west":  { "model": "jacmod:decompressor", "y": 270 },
+        "active=false,facing=east":  { "model": "jacmod:decompressor", "y": 90 },
+		"active=true,facing=north": { "model": "jacmod:decompressor_active" },
+        "active=true,facing=south": { "model": "jacmod:decompressor_active", "y": 180 },
+        "active=true,facing=west":  { "model": "jacmod:decompressor_active", "y": 270 },
+        "active=true,facing=east":  { "model": "jacmod:decompressor_active", "y": 90 }
+    }
+}

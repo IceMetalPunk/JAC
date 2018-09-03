@@ -3,7 +3,7 @@ package com.icemetalpunk.jac.registries;
 import java.util.function.BiConsumer;
 
 import com.icemetalpunk.jac.blocks.BlockDecompressor;
-import com.icemetalpunk.jac.util.ModelHelper;
+import com.icemetalpunk.jac.blocks.JACBlock;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -29,11 +29,24 @@ public class JACBlockRegistry extends JACRegistry<Block> {
 	}
 
 	@SubscribeEvent
+	public void registerItemBlocks(RegistryEvent.Register<Item> event) {
+		this.process(new BiConsumer<String, Block>() {
+			@Override
+			public void accept(String name, Block block) {
+				if (block instanceof JACBlock) {
+					JACBlock jacBlock = (JACBlock) block;
+					event.getRegistry().register(jacBlock.getItemBlock());
+				}
+			}
+		});
+	}
+
+	@SubscribeEvent
 	public void registerModels(ModelRegistryEvent event) {
 		this.process(new BiConsumer<String, Block>() {
 			@Override
 			public void accept(String name, Block block) {
-				ModelHelper.registerItemModel(Item.getItemFromBlock(block));
+				// ModelHelper.registerItemModel(Item.getItemFromBlock(block));
 			}
 		});
 	}

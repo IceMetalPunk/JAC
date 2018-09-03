@@ -2,3 +2,5 @@ itemGroup.jacmod=JAC
 
 item.jacmod.jac.name=JAC
 item.jacmod.skeleton_jac.name=Skeleton JAC
+
+tile.jacmod.decompressor=Decompressor
