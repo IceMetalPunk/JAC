@@ -2,7 +2,7 @@ package com.icemetalpunk.jac.registries;
 
 import java.util.function.BiConsumer;
 
-import com.icemetalpunk.jac.blocks.JACItem;
+import com.icemetalpunk.jac.items.JACItem;
 import com.icemetalpunk.jac.util.ModelHelper;
 
 import net.minecraft.item.Item;

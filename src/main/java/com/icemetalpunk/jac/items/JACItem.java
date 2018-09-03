@@ -1,4 +1,4 @@
-package com.icemetalpunk.jac.blocks;
+package com.icemetalpunk.jac.items;
 
 import com.icemetalpunk.jac.JAC;
 
