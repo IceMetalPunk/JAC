@@ -50,3 +50,14 @@ Mostly exists for the pun, but has one use: breaking a decompressible block in-w
     will make it drop the compression ingredients instead of the block. For instance, breaking
     a diamond block will drop 9 diamonds, breaking a log will drop 4 planks, brick block drops
     4 brick items, etc.
+    
+**Skeleton JAC**
+```
+B B B
+B J B
+B B B
+```
+B = Bone, J = JAC
+
+Skeleton JAC (the Pumpkin King) works like a normal JAC, but has a small chance to drop pumpkins
+    whenever you break a block with it.
