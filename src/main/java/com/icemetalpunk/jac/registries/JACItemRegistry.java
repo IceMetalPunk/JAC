@@ -2,6 +2,8 @@ package com.icemetalpunk.jac.registries;
 
 import java.util.function.BiConsumer;
 
+import com.icemetalpunk.jac.JAC;
+import com.icemetalpunk.jac.items.ItemJAC;
 import com.icemetalpunk.jac.items.JACItem;
 import com.icemetalpunk.jac.util.ModelHelper;
 
@@ -15,6 +17,7 @@ public class JACItemRegistry extends JACRegistry<JACItem> {
 	public JACItemRegistry() {
 		super("item");
 		// TODO: Register items here
+		this.register("jac", new ItemJAC());
 	}
 
 	@SubscribeEvent

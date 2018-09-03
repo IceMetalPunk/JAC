@@ -4,6 +4,8 @@ import org.apache.logging.log4j.Logger;
 
 import com.icemetalpunk.jac.proxy.JACProxy;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -21,6 +23,13 @@ public class JAC {
 
 	@SidedProxy(clientSide = "com.icemetalpunk.jac.proxy.JACClient", serverSide = "com.icemetalpunk.jac.proxy.JACServer")
 	public static JACProxy proxy;
+
+	public static CreativeTabs tab = new CreativeTabs("jacmod") {
+		@Override
+		public ItemStack getTabIconItem() {
+			return new ItemStack(proxy.items.get("jac"));
+		}
+	};
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {

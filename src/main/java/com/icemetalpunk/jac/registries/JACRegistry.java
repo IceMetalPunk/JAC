@@ -2,14 +2,18 @@ package com.icemetalpunk.jac.registries;
 
 import java.util.HashMap;
 import java.util.function.BiConsumer;
-import java.util.function.Function;
 
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+
+@EventBusSubscriber
 public class JACRegistry<T> {
 	private HashMap<String, T> registry = new HashMap<>();
-	private String registryName = "Object";
+	private String registryName = "object";
 
 	public JACRegistry(String name) {
 		this.registryName = name;
+		MinecraftForge.EVENT_BUS.register(this);
 	}
 
 	public T get(String name) {
@@ -29,6 +33,7 @@ public class JACRegistry<T> {
 			return true;
 		}
 	}
+
 	public void process(BiConsumer<? super String, ? super T> callback) {
 		registry.forEach(callback);
 	}
