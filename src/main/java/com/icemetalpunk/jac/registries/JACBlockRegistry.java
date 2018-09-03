@@ -14,7 +14,6 @@ public class JACBlockRegistry extends JACRegistry<Block> {
 
 	public JACBlockRegistry() {
 		super("block");
-		// TODO: Register blocks here
 	}
 
 	@SubscribeEvent

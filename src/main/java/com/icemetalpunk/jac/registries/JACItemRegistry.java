@@ -3,6 +3,7 @@ package com.icemetalpunk.jac.registries;
 import java.util.function.BiConsumer;
 
 import com.icemetalpunk.jac.items.ItemJAC;
+import com.icemetalpunk.jac.items.ItemSkeletonJAC;
 import com.icemetalpunk.jac.util.ModelHelper;
 
 import net.minecraft.item.Item;
@@ -14,8 +15,8 @@ public class JACItemRegistry extends JACRegistry<Item> {
 
 	public JACItemRegistry() {
 		super("item");
-		// TODO: Register items here
 		this.register("jac", new ItemJAC());
+		this.register("skeleton_jac", new ItemSkeletonJAC());
 	}
 
 	@SubscribeEvent

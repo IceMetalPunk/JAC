@@ -1,5 +1,6 @@
 package com.icemetalpunk.jac.events;
 
+import java.util.Arrays;
 import java.util.List;
 
 import com.icemetalpunk.jac.JAC;
@@ -9,6 +10,7 @@ import com.icemetalpunk.jac.util.CompressionLookup.MultiItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -20,8 +22,14 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @EventBusSubscriber
 public class JACEventHandler {
+	List<Item> jacItems;
+
 	public JACEventHandler() {
 		MinecraftForge.EVENT_BUS.register(this);
+	}
+
+	public void init() {
+		jacItems = Arrays.asList(JAC.proxy.items.get("jac"), JAC.proxy.items.get("skeleton_jac"));
 	}
 
 	@SubscribeEvent
@@ -36,8 +44,9 @@ public class JACEventHandler {
 			return;
 		}
 		ItemStack handItemStack = player.getHeldItem(player.getActiveHand());
-		ItemStack jacItemStack = new ItemStack(JAC.proxy.items.get("jac"));
-		if (!ItemStack.areItemsEqualIgnoreDurability(handItemStack, jacItemStack)) {
+		Item handItem = handItemStack.getItem();
+
+		if (!jacItems.contains(handItem)) {
 			return;
 		}
 
@@ -53,6 +62,9 @@ public class JACEventHandler {
 				event.setDropChance(1);
 				drops.clear();
 				drops.add(CompressionLookup.decompressionRecipes.get(multiItem).copy());
+				if (handItem == JAC.proxy.items.get("skeleton_jac") && world.rand.nextInt(5) == 1) {
+					drops.add(new ItemStack(Item.getItemFromBlock(Blocks.PUMPKIN)));
+				}
 			} else {
 				event.setDropChance(0);
 				drops.clear();

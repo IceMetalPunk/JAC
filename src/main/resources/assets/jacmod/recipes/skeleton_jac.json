@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"jacmod:skeleton_jac",
+  "pattern": [
+    "BBB",
+	"BJB",
+	"BBB"
+  ],
+  "key": {
+    "B": {
+		"item": "minecraft:bone",
+		"data": 0
+	},
+	"J": {
+		"item": "jacmod:jac",
+		"data": 0
+	}
+  },
+  "result": {
+    "item": "jacmod:skeleton_jac",
+	"data": 0
+  }
+}

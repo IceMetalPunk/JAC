@@ -1,0 +1,37 @@
+{
+  "parent": "jacmod:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jacmod:skeleton_jac"
+    ]
+  },
+  "criteria": {
+    "has_bone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:bone",
+            "data": 0
+          }
+        ]
+      }
+    },
+	"has_jac_recipe": {
+	  "trigger": "minecraft:recipe_unlocked",
+	  "conditions": {
+		"recipe": "jacmod:jac"
+	  }
+	},
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jacmod:skeleton_jac"
+      }
+    }
+  },
+  "requirements": [
+      ["has_bone", "has_the_recipe"],
+	  ["has_the_recipe", "has_jac_recipe"]
+  ]
+}

@@ -1,3 +1,11 @@
+/*
+ * TODO:
+ * 1. Add Skeleton JAC, with a chance of dropping pumpkins when used.
+ * 2. Add Compressor.
+ * 3. Add Decompressor.
+ * 4. ??
+ * 5. Profit!
+ */
 package com.icemetalpunk.jac;
 
 import org.apache.logging.log4j.Logger;
@@ -43,6 +51,7 @@ public class JAC {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
+		eventHandler.init();
 	}
 
 	@EventHandler
