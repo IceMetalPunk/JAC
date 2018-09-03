@@ -1,28 +1,39 @@
 package com.icemetalpunk.jac;
 
-import net.minecraft.init.Blocks;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
 
+import com.icemetalpunk.jac.proxy.JACProxy;
+
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+
 @Mod(modid = JAC.MODID, name = JAC.NAME, version = JAC.VERSION)
-public class JAC
-{
-    public static final String MODID = "jacmod";
-    public static final String NAME = "JAC";
-    public static final String VERSION = "1.0";
+public class JAC {
+	public static final String MODID = "jacmod";
+	public static final String NAME = "JAC";
+	public static final String VERSION = "1.0";
 
-    private static Logger logger;
+	private static Logger logger;
 
-    @EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
-    }
+	@SidedProxy(clientSide = "com.icemetalpunk.jac.proxy.JACClient", serverSide = "com.icemetalpunk.jac.proxy.JACServer")
+	public static JACProxy proxy;
 
-    @EventHandler
-    public void init(FMLInitializationEvent event)
-    {
-    }
+	@EventHandler
+	public void preInit(FMLPreInitializationEvent event) {
+		proxy.preInit(event);
+	}
+
+	@EventHandler
+	public void init(FMLInitializationEvent event) {
+		proxy.init(event);
+	}
+
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event) {
+		proxy.postInit(event);
+	}
 }
