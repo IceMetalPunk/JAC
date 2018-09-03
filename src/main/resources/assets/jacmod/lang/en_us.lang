@@ -4,3 +4,4 @@ item.jacmod.jac.name=JAC
 item.jacmod.skeleton_jac.name=Skeleton JAC
 
 tile.jacmod.decompressor.name=Decompressor
+container.jac.decompressor=Decompressor

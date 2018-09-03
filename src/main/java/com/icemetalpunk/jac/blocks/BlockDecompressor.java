@@ -2,8 +2,11 @@ package com.icemetalpunk.jac.blocks;
 
 import java.util.Random;
 
+import com.icemetalpunk.jac.JAC;
+import com.icemetalpunk.jac.registries.JACGuiRegistry;
 import com.icemetalpunk.jac.tileentity.TileEntityDecompressor;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -31,6 +34,7 @@ public class BlockDecompressor extends JACBlock implements ITileEntityProvider {
 
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 	public static final PropertyBool ACTIVE = PropertyBool.create("active");
+	private static boolean keepInventory = false;
 
 	public BlockDecompressor() {
 		super("decompressor", Material.ROCK);
@@ -85,7 +89,8 @@ public class BlockDecompressor extends JACBlock implements ITileEntityProvider {
 			TileEntity tileentity = worldIn.getTileEntity(pos);
 
 			if (tileentity instanceof TileEntityDecompressor) {
-				playerIn.displayGUIChest((TileEntityDecompressor) tileentity);
+				playerIn.openGui(JAC.instance, JACGuiRegistry.GUI_DECOMPRESSOR, worldIn, pos.getX(), pos.getY(),
+						pos.getZ());
 			}
 
 			return true;
@@ -114,13 +119,34 @@ public class BlockDecompressor extends JACBlock implements ITileEntityProvider {
 
 	@Override
 	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-		TileEntity tileentity = worldIn.getTileEntity(pos);
 
-		if (tileentity instanceof TileEntityDecompressor) {
-			InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityDecompressor) tileentity);
-			worldIn.updateComparatorOutputLevel(pos, this);
+		if (!keepInventory) {
+			TileEntity tileentity = worldIn.getTileEntity(pos);
+
+			if (tileentity instanceof TileEntityDecompressor) {
+				InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityDecompressor) tileentity);
+				worldIn.updateComparatorOutputLevel(pos, this);
+			}
 		}
 		super.breakBlock(worldIn, pos, state);
+	}
+
+	public static void setState(boolean active, World worldIn, BlockPos pos) {
+		IBlockState iblockstate = worldIn.getBlockState(pos);
+		TileEntity tileentity = worldIn.getTileEntity(pos);
+		Block thisBlock = JAC.proxy.blocks.get("decompressor");
+		keepInventory = true;
+		EnumFacing face = iblockstate.getValue(FACING);
+
+		worldIn.setBlockState(pos, thisBlock.getDefaultState().withProperty(FACING, face).withProperty(ACTIVE, active),
+				3);
+
+		keepInventory = false;
+
+		if (tileentity != null) {
+			tileentity.validate();
+			worldIn.setTileEntity(pos, tileentity);
+		}
 	}
 
 	@Override

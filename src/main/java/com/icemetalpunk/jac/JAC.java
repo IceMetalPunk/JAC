@@ -11,6 +11,7 @@ package com.icemetalpunk.jac;
 import org.apache.logging.log4j.Logger;
 
 import com.icemetalpunk.jac.events.JACEventHandler;
+import com.icemetalpunk.jac.gui.JACGuiHandler;
 import com.icemetalpunk.jac.proxy.JACProxy;
 import com.icemetalpunk.jac.util.CompressionLookup;
 
@@ -18,16 +19,21 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 @Mod(modid = JAC.MODID, name = JAC.NAME, version = JAC.VERSION)
 public class JAC {
 	public static final String MODID = "jacmod";
 	public static final String NAME = "JAC";
 	public static final String VERSION = "1.0";
+
+	@Instance(JAC.MODID)
+	public static JAC instance = new JAC();
 
 	private static Logger logger;
 
@@ -52,6 +58,7 @@ public class JAC {
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
 		eventHandler.init();
+		NetworkRegistry.INSTANCE.registerGuiHandler(JAC.instance, new JACGuiHandler());
 	}
 
 	@EventHandler
