@@ -29,7 +29,7 @@ public class JACEventHandler {
 	}
 
 	public void init() {
-		jacItems = Arrays.asList(JAC.proxy.items.get("jac"), JAC.proxy.items.get("skeleton_jac"));
+		jacItems = Arrays.asList(new Item[] { JAC.proxy.items.get("jac"), JAC.proxy.items.get("skeleton_jac") });
 	}
 
 	@SubscribeEvent

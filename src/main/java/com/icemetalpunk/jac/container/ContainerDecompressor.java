@@ -8,6 +8,7 @@ public class ContainerDecompressor extends ContainerFurnace {
 
 	public ContainerDecompressor(InventoryPlayer playerInventory, IInventory furnaceInventory) {
 		super(playerInventory, furnaceInventory);
+		// FIXME: Override as necessary to allow proper fuels and items in.
 	}
 
 }
